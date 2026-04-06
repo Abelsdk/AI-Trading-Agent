@@ -4,17 +4,18 @@ from src.core.config import settings
 from src.db.database import engine
 from src.db.base import Base
 from src.models import trade, price_bar  # noqa: F401
-from src.api.routes import trades, market_data, analytics
+from src.api.routes import trades, market_data, analytics, ai
 
 app = FastAPI(
     title=settings.app_name,
-    version="0.2.0",
+    version="0.3.0",
     description="AI-powered trading research and decision support assistant.",
 )
 
 app.include_router(trades.router)
 app.include_router(market_data.router)
 app.include_router(analytics.router)
+app.include_router(ai.router)
 
 
 @app.on_event("startup")
@@ -34,5 +35,5 @@ def health():
         "status": "ok",
         "environment": settings.environment,
         "app": settings.app_name,
-        "version": "0.2.0",
+        "version": "0.3.0",
     }
