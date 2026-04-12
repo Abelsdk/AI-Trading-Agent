@@ -109,7 +109,7 @@ def get_performance_summary(
     # Profit factor = gross profit / gross loss
     gross_profit = sum(wins)
     gross_loss = abs(sum(losses))
-    profit_factor = gross_profit / gross_loss if gross_loss > 0 else float('inf')
+    profit_factor = gross_profit / gross_loss if gross_loss > 0 else 999.99
     
     # Max drawdown — largest peak-to-trough decline in cumulative P&L
     cumulative = []
